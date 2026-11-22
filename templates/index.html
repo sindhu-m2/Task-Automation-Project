@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | TaskFlow</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="intro-body">
+
+    <div class="intro-orb orb-one"></div>
+    <div class="intro-orb orb-two"></div>
+    <div class="intro-orb orb-three"></div>
+
+    <section class="intro-section">
+
+        <div class="intro-content">
+
+            <div class="intro-label">
+                ✦ YOUR SMART WORKSPACE
+            </div>
+
+            <h1 class="intro-title">
+                Automate.
+                <span>Simplify.</span>
+                Elevate.
+            </h1>
+
+            <p class="intro-description">
+                A smarter way to manage everyday digital tasks.
+                Less manual work. More possibilities.
+            </p>
+
+            <div class="intro-name">
+                Created by
+                <strong>B Sudarshana Laxmi Sindhu</strong>
+            </div>
+
+            <a href="{{ url_for('dashboard') }}" class="primary-button">
+                Explore TaskFlow
+                <span>→</span>
+            </a>
+
+            <div class="intro-bottom">
+                PYTHON POWERED · SMART AUTOMATION · ONE WORKSPACE
+            </div>
+
+        </div>
+
+        <div class="intro-side-card">
+            <div class="floating-icon">✦</div>
+            <h3>Work Smarter</h3>
+            <p>Automate your everyday workflow.</p>
+
+            <div class="mini-line"></div>
+            <div class="mini-line short"></div>
+            <div class="mini-line"></div>
+        </div>
+
+    </section>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

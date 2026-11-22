@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Excel Assistant | TaskFlow{% endblock %}
+
+{% block content %}
+
+<section class="page-heading reveal">
+    <span class="eyebrow">SPREADSHEET AUTOMATION</span>
+    <h1>Excel <span>Assistant</span></h1>
+    <p>Preview and clean your spreadsheet data with Python.</p>
+</section>
+
+<section class="panel reveal">
+
+    <div class="panel-icon">▦</div>
+
+    <h2>Spreadsheet Processor</h2>
+
+    <p>
+        Upload an Excel or CSV file to preview its contents
+        or remove duplicate rows and empty rows.
+    </p>
+
+    <form action="{{ url_for('process_excel') }}"
+          method="POST"
+          enctype="multipart/form-data">
+
+        <label>Select Excel or CSV File</label>
+
+        <input type="file"
+               name="file"
+               accept=".xlsx,.xls,.csv"
+               required>
+
+        <div class="button-row">
+
+            <button type="submit"
+                    name="action"
+                    value="preview"
+                    class="secondary-button">
+                Preview Data
+            </button>
+
+            <button type="submit"
+                    name="action"
+                    value="clean"
+                    class="primary-button">
+                Clean & Download →
+            </button>
+
+        </div>
+
+    </form>
+
+    {% if preview is defined and preview %}
+
+        <div class="results-section">
+
+            <h2>Preview Results</h2>
+
+            <div class="stats-row">
+                <div class="stat-box">
+                    <span>Rows</span>
+                    <strong>{{ row_count }}</strong>
+                </div>
+
+                <div class="stat-box">
+                    <span>Columns</span>
+                    <strong>{{ column_count }}</strong>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                {{ preview | safe }}
+            </div>
+
+        </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

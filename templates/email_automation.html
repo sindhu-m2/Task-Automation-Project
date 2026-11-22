@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Email Automation | TaskFlow{% endblock %}
+
+{% block content %}
+
+<section class="page-heading reveal">
+    <span class="eyebrow">COMMUNICATION AUTOMATION</span>
+    <h1>Email <span>Automation</span></h1>
+    <p>Send emails directly from your TaskFlow workspace.</p>
+</section>
+
+<section class="panel email-panel reveal">
+
+    <div class="panel-icon">✉</div>
+
+    <h2>Compose Email</h2>
+
+    <form action="{{ url_for('send_email') }}" method="POST">
+
+        <label>Recipient Email</label>
+        <input type="email"
+               name="to"
+               placeholder="recipient@example.com"
+               required>
+
+        <label>Email Subject</label>
+        <input type="text"
+               name="subject"
+               placeholder="Enter email subject"
+               required>
+
+        <label>Message</label>
+        <textarea name="body"
+                  rows="7"
+                  placeholder="Write your message here..."
+                  required></textarea>
+
+        <button type="submit" class="primary-button">
+            Send Email →
+        </button>
+
+    </form>
+
+    <div class="notice">
+        Configure your SMTP settings in the local .env file before sending
+        emails. Never share your email password or app password publicly.
+    </div>
+
+</section>
+
+{% endblock %}

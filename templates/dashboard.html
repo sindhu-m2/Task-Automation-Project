@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | TaskFlow{% endblock %}
+
+{% block content %}
+
+<section class="hero-section reveal">
+    <div>
+        <span class="eyebrow">YOUR AUTOMATION WORKSPACE</span>
+
+        <h1>Welcome to <span>TaskFlow.</span></h1>
+
+        <p>
+            Everything you need to automate your everyday digital tasks,
+            all in one place.
+        </p>
+    </div>
+
+    <div class="hero-symbol">✦</div>
+</section>
+
+<section class="section-heading reveal">
+    <div>
+        <span class="eyebrow">EXPLORE YOUR WORKSPACE</span>
+        <h2>Automation Tools</h2>
+    </div>
+    <p>Choose a tool to get started.</p>
+</section>
+
+<section class="tool-grid">
+
+    <a href="{{ url_for('file_manager') }}" class="tool-card reveal">
+        <div class="tool-icon purple">▤</div>
+        <h3>File Manager</h3>
+        <p>Organize, rename and identify duplicate files.</p>
+        <span class="card-link">Explore tool →</span>
+    </a>
+
+    <a href="{{ url_for('pdf_tools') }}" class="tool-card reveal">
+        <div class="tool-icon blue">▧</div>
+        <h3>PDF Studio</h3>
+        <p>Merge PDF documents and split PDF pages.</p>
+        <span class="card-link">Explore tool →</span>
+    </a>
+
+    <a href="{{ url_for('excel_tools') }}" class="tool-card reveal">
+        <div class="tool-icon green">▦</div>
+        <h3>Excel Assistant</h3>
+        <p>Preview spreadsheets and clean your data.</p>
+        <span class="card-link">Explore tool →</span>
+    </a>
+
+    <a href="{{ url_for('email_automation') }}" class="tool-card reveal">
+        <div class="tool-icon pink">✉</div>
+        <h3>Email Automation</h3>
+        <p>Send emails directly through your workspace.</p>
+        <span class="card-link">Explore tool →</span>
+    </a>
+
+    <a href="{{ url_for('task_scheduler') }}" class="tool-card reveal">
+        <div class="tool-icon orange">◷</div>
+        <h3>Task Scheduler</h3>
+        <p>Schedule emails to be sent at a chosen time.</p>
+        <span class="card-link">Explore tool →</span>
+    </a>
+
+    <a href="{{ url_for('about') }}" class="tool-card reveal">
+        <div class="tool-icon violet">✧</div>
+        <h3>About TaskFlow</h3>
+        <p>Discover the project and its technologies.</p>
+        <span class="card-link">Explore tool →</span>
+    </a>
+
+</section>
+
+{% endblock %}

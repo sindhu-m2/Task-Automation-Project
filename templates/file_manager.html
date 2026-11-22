@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}File Manager | TaskFlow{% endblock %}
+
+{% block content %}
+
+<section class="page-heading reveal">
+    <span class="eyebrow">SMART FILE OPERATIONS</span>
+    <h1>File <span>Manager</span></h1>
+    <p>Organize and manage multiple files with simple automation tools.</p>
+</section>
+
+<section class="form-grid">
+
+    <div class="panel reveal">
+        <div class="panel-icon">▤</div>
+        <h2>Organize Files</h2>
+        <p>Sort uploaded files into folders according to their file types.</p>
+
+        <form action="{{ url_for('organize_files') }}"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <label>Select Files</label>
+            <input type="file" name="files" multiple required>
+
+            <button type="submit" class="primary-button">
+                Organize Files →
+            </button>
+        </form>
+    </div>
+
+    <div class="panel reveal">
+        <div class="panel-icon">✎</div>
+        <h2>Bulk Rename</h2>
+        <p>Rename multiple uploaded files using a common prefix.</p>
+
+        <form action="{{ url_for('rename_files') }}"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <label>Select Files</label>
+            <input type="file" name="files" multiple required>
+
+            <label>File Name Prefix</label>
+            <input type="text"
+                   name="prefix"
+                   placeholder="Example: MyFiles"
+                   required>
+
+            <button type="submit" class="primary-button">
+                Rename Files →
+            </button>
+        </form>
+    </div>
+
+    <div class="panel reveal">
+        <div class="panel-icon">⌕</div>
+        <h2>Duplicate Finder</h2>
+        <p>Find duplicate files by comparing their contents.</p>
+
+        <form action="{{ url_for('find_duplicates') }}"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <label>Select Files</label>
+            <input type="file" name="files" multiple required>
+
+            <button type="submit" class="primary-button">
+                Find Duplicates →
+            </button>
+        </form>
+    </div>
+
+</section>
+
+<div class="notice">
+    Files are processed after upload. Your original files on your computer
+    are not directly modified.
+</div>
+
+{% endblock %}

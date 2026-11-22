@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Task Scheduler | TaskFlow{% endblock %}
+
+{% block content %}
+
+<section class="page-heading reveal">
+    <span class="eyebrow">TIME-BASED AUTOMATION</span>
+    <h1>Task <span>Scheduler</span></h1>
+    <p>Schedule emails to be sent automatically at a selected time.</p>
+</section>
+
+<section class="panel reveal">
+
+    <div class="panel-icon">◷</div>
+
+    <h2>Schedule an Email</h2>
+
+    <form action="{{ url_for('add_scheduled_email') }}"
+          method="POST">
+
+        <label>Recipient Email</label>
+        <input type="email"
+               name="to"
+               placeholder="recipient@example.com"
+               required>
+
+        <label>Email Subject</label>
+        <input type="text"
+               name="subject"
+               placeholder="Enter subject"
+               required>
+
+        <label>Email Message</label>
+        <textarea name="body"
+                  rows="5"
+                  placeholder="Write your message..."
+                  required></textarea>
+
+        <label>Schedule Date and Time</label>
+        <input type="datetime-local"
+               name="run_at"
+               required>
+
+        <button type="submit" class="primary-button">
+            Schedule Email →
+        </button>
+
+    </form>
+
+</section>
+
+<section class="panel reveal">
+
+    <h2>Scheduled Tasks</h2>
+
+    {% if jobs %}
+
+        <div class="scheduled-list">
+
+            {% for job in jobs %}
+
+                <div class="scheduled-item">
+
+                    <div>
+                        <h3>{{ job.name }}</h3>
+                        <p>{{ job.run_time }}</p>
+                    </div>
+
+                    <form action="{{ url_for('delete_scheduled_job', job_id=job.id) }}"
+                          method="POST">
+
+                        <button type="submit" class="danger-button">
+                            Cancel
+                        </button>
+
+                    </form>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <p class="empty-state">
+            No scheduled emails yet. Your scheduled tasks will appear here.
+        </p>
+
+    {% endif %}
+
+    <div class="notice">
+        Scheduled tasks are held in memory. Keep the application running
+        until the scheduled time; restarting it clears pending jobs.
+    </div>
+
+</section>
+
+{% endblock %}

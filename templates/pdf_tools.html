@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}PDF Studio | TaskFlow{% endblock %}
+
+{% block content %}
+
+<section class="page-heading reveal">
+    <span class="eyebrow">DOCUMENT AUTOMATION</span>
+    <h1>PDF <span>Studio</span></h1>
+    <p>Manage your PDF documents using simple tools.</p>
+</section>
+
+<section class="form-grid">
+
+    <div class="panel reveal">
+        <div class="panel-icon">▧</div>
+        <h2>Merge PDFs</h2>
+        <p>Combine multiple PDF documents into one file.</p>
+
+        <form action="{{ url_for('merge_pdfs') }}"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <label>Select PDF Files</label>
+            <input type="file"
+                   name="files"
+                   accept=".pdf"
+                   multiple
+                   required>
+
+            <button type="submit" class="primary-button">
+                Merge Documents →
+            </button>
+        </form>
+    </div>
+
+    <div class="panel reveal">
+        <div class="panel-icon">▤</div>
+        <h2>Split PDF</h2>
+        <p>Extract a selected range of pages from a PDF document.</p>
+
+        <form action="{{ url_for('split_pdf') }}"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <label>Select PDF File</label>
+            <input type="file"
+                   name="file"
+                   accept=".pdf"
+                   required>
+
+            <label>Start Page</label>
+            <input type="number"
+                   name="start_page"
+                   min="1"
+                   value="1"
+                   required>
+
+            <label>End Page</label>
+            <input type="number"
+                   name="end_page"
+                   min="1"
+                   value="1"
+                   required>
+
+            <button type="submit" class="primary-button">
+                Split PDF →
+            </button>
+        </form>
+    </div>
+
+</section>
+
+{% endblock %}
